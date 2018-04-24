@@ -22,6 +22,10 @@ export function itemsReducer(state = initState, action: any): any {
             //debugger;
             return { ...state, data: [...state.data, action.payload] };
         //break;
+        case c.DEL_ITEM:
+            //debugger;
+            return { ...state, data: [...state.data.filter(f => f.id != action.payload)] };
+        //break;
 
         default:
             return state;

@@ -36,7 +36,7 @@ export default connect(
                 return dispatch({ type: c.ADD_ITEM, payload: Date.now() });
             },
             removeItem(id: any) {
-                debugger;
+                return dispatch({ type: c.DEL_ITEM, payload: id });
             }
         }
     }

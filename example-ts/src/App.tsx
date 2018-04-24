@@ -29,13 +29,15 @@ class App extends React.Component {
                 auth
               </div>
             </nav>
-            <Route exact path="/items" component={Items} />
-            <Route exact path="/items/:id" component={ItemDetails} />
-            <Route path="/workers" component={Workers} />
-            <Route path="/test/:id/:key" render={(params) => {
-              console.log(params)
-              return <div>test</div>
-            }} />
+            <div className="container-fluid">
+              <Route exact path="/items" component={Items} />
+              <Route exact path="/items/:id" component={ItemDetails} />
+              <Route path="/workers" component={Workers} />
+              <Route path="/test/:id/:key" render={(params) => {
+                console.log(params)
+                return <div>test</div>
+              }} />
+            </div>
           </div>
         </Router>
       </div>
