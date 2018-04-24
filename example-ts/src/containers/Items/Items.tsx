@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 import * as c from "../../utils/contrans";
 export interface IProps {
     data: any[],
-    addItem: any
+    addItem: any,
+    removeItem: any
 }
 
 export interface IState {
@@ -22,7 +23,7 @@ class Items extends React.Component<IProps, IState> {
     public render() {
         return (
 
-            <div><button onClick={this.props.addItem.bind(this)}>Add Item</button><DataGrid data={this.props.data} /> </div>
+            <div><button onClick={this.props.addItem.bind(this)}>Add Item</button><DataGrid data={this.props.data} onRemove={this.props.removeItem} /> </div>
         )
     }
 }
@@ -33,6 +34,9 @@ export default connect(
         return {
             addItem() {
                 return dispatch({ type: c.ADD_ITEM, payload: Date.now() });
+            },
+            removeItem(id: any) {
+                debugger;
             }
         }
     }

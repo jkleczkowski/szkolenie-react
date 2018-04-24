@@ -1,7 +1,8 @@
 import * as React from "react"
 
 export interface IProps {
-    data: any[]
+    data: any[],
+    onRemove: any;
 }
 
 export interface IState {
@@ -16,7 +17,7 @@ export default class DataGrid extends React.Component<IProps, IState> {
         }
         this.config = [
             { key: 'title' },
-            { key: 'price' },
+            { key: 'price', type: 'number' },
             { key: 'category' },
             { key: 'imgSrc', title: 'IMAGE', type: 'image' }]
     }
@@ -39,9 +40,12 @@ export default class DataGrid extends React.Component<IProps, IState> {
                             return <tr key={row.id}>
                                 {this.config.map(({ key, type }, iidx) => {
                                     {
+                                        let height = 36;
                                         switch (type) {
                                             case 'image':
-                                                return <td key={iidx}><img height="48" src={row[key]} /> </td>
+                                                return <td key={iidx}><img height={height} src={row[key]} /> </td>
+                                            case 'number':
+                                                return <td key={iidx}><input height={height} type="number" className="form-control" defaultValue={row[key]} /> </td>
                                             default:
                                                 return <td key={iidx}>{row[key]}</td>
                                         }
@@ -49,7 +53,7 @@ export default class DataGrid extends React.Component<IProps, IState> {
                                 })}
 
                                 <td>
-                                    <button type="button" onClick={() => { console.log(this) }} className="btn btn-success">act1</button>
+                                    <button type="button" onClick={_ => this.props.onRemove(row.id)} className="btn btn-danger">Remove</button>
                                 </td>
                             </tr>
                         })
