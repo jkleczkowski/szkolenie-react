@@ -21,7 +21,7 @@ export default class DataGrid extends React.Component<IProps, IState> {
             <div>DataGrid: <table>
                 <tbody>
                     {this.props.data.map((itm, idx) => {
-                        return <tr key={idx}><td>{itm}</td></tr>
+                        return <tr key={itm.id}><td>{itm.title}</td></tr>
                     })}
                 </tbody>
             </table></div>

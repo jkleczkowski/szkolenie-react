@@ -4,12 +4,12 @@ import App from './App';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux'
 import { itemsReducer } from './containers/Items/ItemsReducers';
-//,combineReducers, applyMiddleware
-
-const store = createStore(itemsReducer);
+//, applyMiddleware
+const reducers = combineReducers({ itemsReducer })
+const store = createStore(reducers);
 
 //store.dispatch({ type: 'ADD_ITEM', payload: 4 });
 //store.dispatch({ type: 'ADD_ITEM', payload: 5 });
