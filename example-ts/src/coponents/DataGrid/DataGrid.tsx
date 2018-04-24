@@ -2,6 +2,7 @@ import * as React from "react"
 
 export interface IProps {
     data: any[],
+    config: Array<any>,
     onRemove: any;
 }
 
@@ -15,11 +16,7 @@ export default class DataGrid extends React.Component<IProps, IState> {
 
         this.state = {
         }
-        this.config = [
-            { key: 'title' },
-            { key: 'price', type: 'number' },
-            { key: 'category' },
-            { key: 'imgSrc', title: 'IMAGE', type: 'image' }]
+
     }
 
     render() {
@@ -28,8 +25,8 @@ export default class DataGrid extends React.Component<IProps, IState> {
                 <table className="table">
                     <thead>
                         <tr>
-                            {this.config.map((citem, iidx) => {
-                                return <th key={iidx}>{citem.title != undefined ? citem.title : citem.key}</th>
+                            {this.props.config.map((citem, iidx) => {
+                                return <th key={iidx}>{citem.title != undefined ? citem.title : citem.key.toUpperCase()}</th>
                             })}
 
                             <th>ACTION</th>
@@ -38,7 +35,7 @@ export default class DataGrid extends React.Component<IProps, IState> {
                     <tbody>{
                         this.props.data.map((row, idx) => {
                             return <tr key={row.id}>
-                                {this.config.map(({ key, type }, iidx) => {
+                                {this.props.config.map(({ key, type }, iidx) => {
                                     {
                                         let height = 36;
                                         switch (type) {

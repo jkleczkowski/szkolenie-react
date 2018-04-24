@@ -14,7 +14,13 @@ const initState = {
             "imgSrc": "https://api.emitter.pl/assets/potatoes.jpg",
             "category": "food",
             "id": "5ade4f00866e000b98eb20f0"
-        }]
+        }],
+    config: [
+        { key: 'title' },
+        { key: 'price', type: 'number' },
+        { key: 'category' },
+        { key: 'imgSrc', title: 'IMAGE', type: 'image' }
+    ]
 };
 export function itemsReducer(state = initState, action: any): any {
     switch (action.type) {
@@ -26,7 +32,7 @@ export function itemsReducer(state = initState, action: any): any {
             //debugger;
             return { ...state, data: state.data.filter(f => f.id != action.payload) };
 
-        case 'X':
+        case c.FETCH_ITEM_SUCCESS:
             //debugger;
             return { ...state, data: action.payload };
 
