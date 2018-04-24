@@ -21,11 +21,14 @@ export function itemsReducer(state = initState, action: any): any {
         case c.ADD_ITEM:
             //debugger;
             return { ...state, data: [...state.data, action.payload] };
-        //break;
+
         case c.DEL_ITEM:
             //debugger;
             return { ...state, data: state.data.filter(f => f.id != action.payload) };
-        //break;
+
+        case 'X':
+            //debugger;
+            return { ...state, data: action.payload };
 
         default:
             return state;

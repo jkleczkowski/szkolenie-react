@@ -2,6 +2,8 @@ import * as React from "react"
 import DataGrid from '../../coponents/DataGrid'
 import { connect } from "react-redux";
 import * as c from "../../utils/contrans";
+import * as actions from './actions';
+
 export interface IProps {
     data: any[],
     addItem: any,
@@ -40,8 +42,7 @@ export default connect(
     (dispatch) => {
         return {
             fetchItems() {
-                //debugger;
-                
+                return dispatch(actions.fetchItems())
             },
             addItem() {
                 return dispatch({ type: c.ADD_ITEM, payload: Date.now() });

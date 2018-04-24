@@ -4,12 +4,22 @@ import App from './App';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux'
 import { itemsReducer } from './containers/Items/ItemsReducers';
-//, applyMiddleware
+import thunk from 'redux-thunk';
+
+//const myMiddleware = (store: any) => (next: any) => (action: any) => {
+//  console.group('logger');
+//  console.log('dispatching', action);
+//  let result = next(action);
+//  console.log('next state', store.getState());
+//  console.groupEnd();
+//  return result;
+//};
+
 const reducers = combineReducers({ itemsReducer })
-const store = createStore(reducers);
+const store = createStore(reducers, applyMiddleware(thunk));
 
 //store.dispatch({ type: 'ADD_ITEM', payload: 4 });
 //store.dispatch({ type: 'ADD_ITEM', payload: 5 });
