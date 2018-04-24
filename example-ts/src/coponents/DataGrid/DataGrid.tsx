@@ -18,13 +18,30 @@ export default class DataGrid extends React.Component<IProps, IState> {
 
     render() {
         return (
-            <div>DataGrid: <table>
-                <tbody>
-                    {this.props.data.map((itm, idx) => {
-                        return <tr key={itm.id}><td>{itm.title}</td></tr>
-                    })}
-                </tbody>
-            </table></div>
+            <div>
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th>TITLE</th>
+                            <th>PRICE</th>
+                            <th>CATEGORY</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>{
+                        this.props.data.map((itm, idx) => {
+                            return <tr key={itm.id}>
+                                <td>{itm.title}</td>
+                                <td>{itm.price}</td>
+                                <td>{itm.category}</td>
+                                <td><button type="button" onClick={()=>{console.log(this)}} className="btn btn-success">act1</button></td>
+                            </tr>
+                        })
+                    }
+                    </tbody>
+                </table>
+
+            </div>
         )
     }
 }
