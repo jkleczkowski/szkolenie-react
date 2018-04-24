@@ -1,7 +1,7 @@
 import * as React from "react"
 import DataGrid from '../../coponents/DataGrid'
 import { connect } from "react-redux";
-import { ADD_ITEM } from "../../utils/contrans";
+import * as c from "../../utils/contrans";
 export interface IProps {
     data: any[],
     addItem: any
@@ -32,7 +32,7 @@ export default connect(
     (dispatch) => {
         return {
             addItem() {
-                return dispatch({ type: ADD_ITEM, payload: Date.now() });
+                return dispatch({ type: c.ADD_ITEM, payload: Date.now() });
             }
         }
     }
