@@ -1,14 +1,16 @@
 import * as React from "react"
 import DataGrid from '../../coponents/DataGrid'
+import { connect } from "react-redux";
 export interface IProps {
-    children?: React.ReactNode
+    data: any[],
+    addItem: any
 }
 
 export interface IState {
 
 }
 
-export default class Items extends React.Component<IProps, IState> {
+class Items extends React.Component<IProps, IState> {
 
     constructor(props: IProps) {
         super(props)
@@ -19,7 +21,18 @@ export default class Items extends React.Component<IProps, IState> {
     public render() {
         return (
 
-            <div><DataGrid data={[1, 2, 3]} /> </div>
+            <div><button onClick={this.props.addItem.bind(this)}>Add Item</button><DataGrid data={this.props.data} /> </div>
         )
     }
 }
+
+export default connect(
+    (store) => { return { ...store } },
+    (dispatch) => {
+        return {
+            addItem() {
+                return dispatch({ type: 'ADD_ITEM', payload: Date.now() });
+            }
+        }
+    }
+)(Items)

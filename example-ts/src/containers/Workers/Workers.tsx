@@ -1,10 +1,8 @@
 import * as React from "react"
 
-export interface IProps {
-    children?: React.ReactNode
-}
+export interface IProps { }
 
-export interface IState { anything: boolean }
+export interface IState { }
 
 export default class Workers extends React.Component<IProps, IState> {
 
@@ -16,7 +14,6 @@ export default class Workers extends React.Component<IProps, IState> {
 
     public render() {
         return (
-
             <div>Workers</div>
         )
     }
