@@ -6,19 +6,9 @@ import registerServiceWorker from './registerServiceWorker';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux'
+import { itemsReducer } from './containers/Items/ItemsReducers';
 //,combineReducers, applyMiddleware
-function itemsReducer(state = { data: [1, 2, 3] }, action: any): any {
-  switch (action.type) {
-    case 'ADD_ITEM':
-      //debugger;
-      return { ...state, data: [...state.data, action.payload] };
-    //break;
 
-    default:
-      return state;
-    //break;
-  }
-}
 const store = createStore(itemsReducer);
 
 //store.dispatch({ type: 'ADD_ITEM', payload: 4 });
