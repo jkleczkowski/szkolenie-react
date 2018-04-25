@@ -38,7 +38,7 @@ class Items extends React.Component<IProps, IState> {
     }
     updateFilters(p, v) {
         //debugger;
-        this.filters = { ...this.filters, currentPage: v };
+        this.filters = { ...this.filters, [p]: v }; //w nawiasah okreslamy ze to jest nazwa parametru
         //this.props = { ...this.props, loading: true }
         this.props.fetchItems(this.filters);
     }
