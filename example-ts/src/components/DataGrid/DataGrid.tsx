@@ -2,7 +2,7 @@ import * as React from "react"
 
 export interface IProps {
     data: any[],
-    config: Array<any>,
+    config: any[],
     onRemove: any;
 }
 

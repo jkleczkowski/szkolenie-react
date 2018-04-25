@@ -16,17 +16,17 @@ export function fetchItems(filters?: any) {
     }
 }
 
-export function removeItem(id: any) {
+export function removeItem(id: any, filters?: any) {
     return function (dispath: any) {
         //TODO: async
         axios
             .delete(`${Settings.ITEMS_END_POINT}/${id}`)
             .then((response) => {
-                //debugger;
-                dispath(fetchItems());
+                debugger;
+                dispath(fetchItems(filters));
                 ;
             }).catch(_ => {
-                dispath(fetchItems());
+                dispath(fetchItems(filters));
             })
     }
 }

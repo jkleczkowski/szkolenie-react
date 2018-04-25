@@ -35,6 +35,7 @@ class Items extends React.Component<IProps, IState> {
         this.state = {}
         this.filters = new ItemsFilters();
         this.props = { ...this.props, loading: true }
+        //this.props.removeItem;//.bind(this.filters)
     }
     updateFilters(p, v) {
         //debugger;
@@ -51,7 +52,7 @@ class Items extends React.Component<IProps, IState> {
                     <ModalGenerator buttonLabel={'Add Item'} title={'New Item'} acceptBtnLabel={'Save'} cancelBtnLabel={'Cancel'}>
                         <AddItemFormComponent />
                     </ModalGenerator>
-                    {(this.props.total || 0) == 0 ? 'No data...' : <DataGrid data={this.props.data} onRemove={this.props.removeItem} config={this.props.config} />}
+                    {(this.props.total || 0) == 0 ? 'No data...' : <DataGrid data={this.props.data} onRemove={(id) => { this.props.removeItem(id, this.filters) }} config={this.props.config} />}
                     {(this.props.total || 0) > 0 ? <Pagination
                         activePage={this.filters.currentPage}
                         itemsCountPerPage={this.filters.itemsPerPage}
@@ -82,8 +83,9 @@ export default connect(
             addItem() {
                 return dispatch({ type: c.ADD_ITEM, payload: Date.now() });
             },
-            removeItem(id: any) {
-                return dispatch(actions.removeItem(id));
+            removeItem(id: any, filters: ItemsFilters) {
+                //debugger;
+                return dispatch(actions.removeItem(id,filters));
             }
         }
     }
