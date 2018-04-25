@@ -19,7 +19,8 @@ export function removeWorker(id: any) {
             .delete(`${Settings.WORKERS_END_POINT}/${id}`)
             .then((response) => {
                 //debugger;
-                dispath({ type: c.DEL_WORKER, payload: response.data.data.id });
-            })
+                dispath(fetchWorkers());
+                ;
+            }).then(_=>{})
     }
 }
