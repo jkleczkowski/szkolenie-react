@@ -5,6 +5,8 @@ export interface IProps {
     children?: React.ReactNode;
     title: string;
     buttonLabel: string;
+    acceptBtnLabel?: string;
+    cancelBtnLabel?: string;
 }
 
 export interface IState {
@@ -36,8 +38,8 @@ export default class ModalGenerator extends React.Component<IProps, IState> {
                         {this.props.children}
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
-                        <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                        {this.props.acceptBtnLabel != undefined ? <Button color="primary" onClick={this.toggle}>{this.props.acceptBtnLabel}</Button> : ''}
+                        {this.props.cancelBtnLabel != undefined ? <Button color="secondary" onClick={this.toggle}>{this.props.cancelBtnLabel}</Button> : ''}
                     </ModalFooter>
                 </Modal>
             </div>

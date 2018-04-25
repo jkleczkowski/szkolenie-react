@@ -1,9 +1,9 @@
 import * as React from "react"
-import DataGrid from '../../coponents/DataGrid'
+import DataGrid from '../../components/DataGrid'
 import { connect } from "react-redux";
 import * as c from "../../utils/contrans";
 import * as actions from './actions';
-import ModalGenerator from "../../coponents/ModalGenerator/ModalGenerator";
+import ModalGenerator from "../../components/ModalGenerator";
 import AddItemFormComponent from "./AddItemComponent";
 
 export interface IProps {
@@ -32,7 +32,9 @@ class Items extends React.Component<IProps, IState> {
                 <div className="col-3"> search    </div>
                 <div className="col-9"> {/* <button onClick={this.props.addItem.bind(this)}>Add Item</button> */}
 
-                    <ModalGenerator buttonLabel={'Add Item'} title={'New Item'}> <AddItemFormComponent /></ModalGenerator>
+                    <ModalGenerator buttonLabel={'Add Item'} title={'New Item'} acceptBtnLabel={'Save'} cancelBtnLabel={'Cancel'}>
+                        <AddItemFormComponent />
+                    </ModalGenerator>
                     <DataGrid data={this.props.data} onRemove={this.props.removeItem} config={this.props.config} /> </div>
             </div>
         )

@@ -1,5 +1,5 @@
 import * as React from "react"
-import DataGrid from '../../coponents/DataGrid'
+import DataGrid from '../../components/DataGrid'
 import { connect } from "react-redux";
 import * as c from "../../utils/contrans";
 import * as actions from './actions';
