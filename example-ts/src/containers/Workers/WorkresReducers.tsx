@@ -1,12 +1,19 @@
 import * as c from "../../utils/contrans";
-const initState = {
-    data: [
-        {
-            "name": "Amelia",
-            "phone": 98292992,
-            "category": "sales",
-            "id": "5adf7f1b692240b719faae59"
-        }],
+
+
+interface IWorker {
+    name: string,
+    phone: number,
+    category: string,
+    id: string
+}
+interface IInitState {
+    data: IWorker[];
+    config: any[];
+}
+
+const initState: IInitState = {
+    data: [],
     config: [
         { key: 'name', title: 'WORKER' },
         { key: 'phone', title: 'PHONE', type: 'phone' },

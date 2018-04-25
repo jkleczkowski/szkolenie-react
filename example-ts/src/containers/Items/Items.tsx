@@ -3,6 +3,7 @@ import DataGrid from '../../coponents/DataGrid'
 import { connect } from "react-redux";
 import * as c from "../../utils/contrans";
 import * as actions from './actions';
+import ModalGenerator from "../../coponents/ModalGenerator/ModalGenerator";
 
 export interface IProps {
     data: any[],
@@ -29,8 +30,8 @@ class Items extends React.Component<IProps, IState> {
             <div className="row">
                 <div className="col-3"> search    </div>
                 <div className="col-9"> {/* <button onClick={this.props.addItem.bind(this)}>Add Item</button> */}
+                    <ModalGenerator><h1>Welcome</h1></ModalGenerator>
                     <DataGrid data={this.props.data} onRemove={this.props.removeItem} config={this.props.config} /> </div>
-
             </div>
         )
     }
@@ -50,7 +51,7 @@ export default connect(
                 return dispatch({ type: c.ADD_ITEM, payload: Date.now() });
             },
             removeItem(id: any) {
-                return dispatch({ type: c.DEL_ITEM, payload: id });
+                return dispatch(actions.removeItem(id));
             }
         }
     }

@@ -10,3 +10,18 @@ export function fetchItems() {
         })
     }
 }
+
+export function removeItem(id: any) {
+    return function (dispath: any) {
+        //TODO: async
+        axios
+            .delete(`${Settings.ITEMS_END_POINT}/${id}`)
+            .then((response) => {
+                //debugger;
+                dispath(fetchItems());
+                ;
+            }).catch(_ => {
+                dispath(fetchItems());
+            })
+    }
+}
