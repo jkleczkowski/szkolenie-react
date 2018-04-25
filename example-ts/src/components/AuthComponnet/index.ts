@@ -1,1 +1,1 @@
-export { default } from "./AuthComponent"
+export { default } from "./Auth"

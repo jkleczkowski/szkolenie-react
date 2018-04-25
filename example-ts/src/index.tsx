@@ -9,6 +9,7 @@ import { Provider } from 'react-redux'
 import { itemsReducer } from './containers/Items/ItemsReducers';
 import thunk from 'redux-thunk';
 import { workersReducer } from './containers/Workers/WorkresReducers';
+import { authReducer } from './components/AuthComponnet/AuthReducer';
 
 //const myMiddleware = (store: any) => (next: any) => (action: any) => {
 //  console.group('logger');
@@ -19,7 +20,7 @@ import { workersReducer } from './containers/Workers/WorkresReducers';
 //  return result;
 //};
 
-const reducers = combineReducers({ itemsReducer, workersReducer })
+const reducers = combineReducers({ itemsReducer, workersReducer, authReducer })
 const store = createStore(reducers, applyMiddleware(thunk));
 
 //store.dispatch({ type: 'ADD_ITEM', payload: 4 });

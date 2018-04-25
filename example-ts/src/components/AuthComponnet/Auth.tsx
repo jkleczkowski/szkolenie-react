@@ -1,9 +1,10 @@
 import * as React from "react"
+import { connect } from "react-redux";
 export interface IProps { children?: React.ReactNode }
-
+import * as c from "../../utils/contrans";
 export interface IState { }
 
-export default class AuthComponent extends React.Component<IProps, IState> {
+class AuthComponent extends React.Component<IProps, IState> {
 
     constructor(props: IProps) {
         super(props)
@@ -35,3 +36,14 @@ export default class AuthComponent extends React.Component<IProps, IState> {
         )
     }
 }
+export default connect(
+    (store: any) => { return { ...store.authReducer } },
+    (dispatch) => {
+        return {
+
+            logIn() {
+                return dispatch({ type: c.LOG_IN, payload: {} });
+            }
+        }
+    }
+)(AuthComponent)

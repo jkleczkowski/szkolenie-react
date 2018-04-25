@@ -7,3 +7,4 @@ export const ADD_WORKER = 'ADD_WORKER';
 export const DEL_WORKER = 'DEL_WORKER'; 
 export const FETCH_WORKER_SUCCESS = 'FETCH_WORKER_SUCCESS'; 
 
+export const LOG_IN = 'LOG_IN'; 
