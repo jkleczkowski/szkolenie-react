@@ -7,9 +7,9 @@ import * as actions from './actions';
 export interface IProps {
     data: any[],
     config: any[],
-    addItem: any,
-    removeItem: any,
-    fetchItems: any
+    addWorker: any,
+    removeWorker: any,
+    fetchWorkers: any
 }
 
 export interface IState { }
@@ -24,11 +24,11 @@ class Workers extends React.Component<IProps, IState> {
 
     public render() {
         return (
-            <div><DataGrid data={this.props.data} onRemove={this.props.removeItem} config={this.props.config} /></div>
+            <div><DataGrid data={this.props.data} onRemove={this.props.removeWorker} config={this.props.config} /></div>
         )
     }
     public componentDidMount() {
-        this.props.fetchItems();
+        this.props.fetchWorkers();
     }
 }
 
@@ -36,14 +36,15 @@ export default connect(
     (store: any) => { return { ...store.workersReducer } },
     (dispatch) => {
         return {
-            fetchItems() {
-                return dispatch(actions.fetchItems())
+            fetchWorkers() {
+                return dispatch(actions.fetchWorkers())
             },
-            addItem() {
+            addWorker() {
                 return dispatch({ type: c.ADD_WORKER, payload: Date.now() });
             },
-            removeItem(id: any) {
-                return dispatch({ type: c.DEL_WORKER, payload: id });
+            removeWorker(id: any) {
+                return dispatch(actions.removeWorker(id))
+                //return dispatch({ type: c.DEL_WORKER, payload: id });
             }
         }
     }
