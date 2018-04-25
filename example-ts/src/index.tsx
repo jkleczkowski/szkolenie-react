@@ -10,6 +10,7 @@ import { itemsReducer } from './containers/Items/ItemsReducers';
 import thunk from 'redux-thunk';
 import { workersReducer } from './containers/Workers/WorkresReducers';
 import { authReducer } from './components/AuthComponnet/AuthReducer';
+import { setCORSInterceptors } from './utils/interceptors';
 
 //const myMiddleware = (store: any) => (next: any) => (action: any) => {
 //  console.group('logger');
@@ -19,6 +20,7 @@ import { authReducer } from './components/AuthComponnet/AuthReducer';
 //  console.groupEnd();
 //  return result;
 //};
+setCORSInterceptors();
 
 const reducers = combineReducers({ itemsReducer, workersReducer, authReducer })
 const store = createStore(reducers, applyMiddleware(thunk));
