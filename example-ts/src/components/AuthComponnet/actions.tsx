@@ -11,7 +11,7 @@ export function logIn(value: AuthDataInterface) {
     return function (dispatch: any) {
         axios.post(Settings.LOGIN_END_POINT, value)
             .then((resp) => {
-                if (resp.data.ok) dispatch({ type: c.USER_LOGGED })
+                if (resp.data.ok) dispatch({ type: c.USER_LOGGED, payload: resp.data.token })
                 else alert(JSON.stringify(resp.data))
             })
     }

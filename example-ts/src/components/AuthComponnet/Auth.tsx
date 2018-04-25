@@ -21,7 +21,6 @@ class AuthComponent extends React.Component<IProps, IState> {
         evt.preventDefault();
         //this.authModal.current.toggle();
         const { username: { value: username }, password: { value: password } } = evt.target;
-        console.log(username, password);
         this.props.logIn({ username, password });
         //debugger;
     }
