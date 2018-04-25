@@ -21,6 +21,8 @@ export function removeWorker(id: any) {
                 //debugger;
                 dispath(fetchWorkers());
                 ;
-            }).then(_=>{})
+            }).catch(_ => {
+                dispath(fetchWorkers());
+            })
     }
 }
