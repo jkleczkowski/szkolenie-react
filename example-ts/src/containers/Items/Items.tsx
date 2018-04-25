@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import * as c from "../../utils/contrans";
 import * as actions from './actions';
 import ModalGenerator from "../../coponents/ModalGenerator/ModalGenerator";
+import AddItemFormComponent from "./AddItemComponent";
 
 export interface IProps {
     data: any[],
@@ -30,7 +31,8 @@ class Items extends React.Component<IProps, IState> {
             <div className="row">
                 <div className="col-3"> search    </div>
                 <div className="col-9"> {/* <button onClick={this.props.addItem.bind(this)}>Add Item</button> */}
-                    <ModalGenerator><h1>Welcome</h1></ModalGenerator>
+
+                    <ModalGenerator buttonLabel={'Add Item'} title={'New Item'}> <AddItemFormComponent /></ModalGenerator>
                     <DataGrid data={this.props.data} onRemove={this.props.removeItem} config={this.props.config} /> </div>
             </div>
         )
