@@ -12,7 +12,7 @@ export function authReducer(state = initState, action: any): any {
     switch (action.type) {
         case c.LOG_IN:
             debugger;
-
+            return { ...state, access: true }
         default:
             return state;
         //break;

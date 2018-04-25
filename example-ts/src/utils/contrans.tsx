@@ -8,3 +8,5 @@ export const DEL_WORKER = 'DEL_WORKER';
 export const FETCH_WORKER_SUCCESS = 'FETCH_WORKER_SUCCESS'; 
 
 export const LOG_IN = 'LOG_IN'; 
+export const USER_LOGGED = 'USER_LOGGED'; 
+export const USER_LOGGED_OUT = 'USER_LOGGED_OUT'; 

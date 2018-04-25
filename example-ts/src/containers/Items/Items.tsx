@@ -45,7 +45,7 @@ class Items extends React.Component<IProps, IState> {
 }
 
 export default connect(
-    (store: any) => { return { ...store.itemsReducer } },
+    (store: any) => { return { ...store.itemsReducer ,...store.authReducer,} },
     (dispatch) => {
         return {
             fetchItems() {

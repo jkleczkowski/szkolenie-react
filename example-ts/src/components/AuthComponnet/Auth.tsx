@@ -1,9 +1,15 @@
 import * as React from "react"
 import { connect } from "react-redux";
-export interface IProps { children?: React.ReactNode }
-import * as c from "../../utils/contrans";
-export interface IState { }
 
+
+import * as actions from "./actions";
+export interface IState {
+
+}
+export interface IProps {
+    children?: React.ReactNode;
+    logIn?: any;
+}
 class AuthComponent extends React.Component<IProps, IState> {
 
     constructor(props: IProps) {
@@ -16,7 +22,8 @@ class AuthComponent extends React.Component<IProps, IState> {
         //this.authModal.current.toggle();
         const { username: { value: username }, password: { value: password } } = evt.target;
         console.log(username, password);
-        debugger;
+        this.props.logIn({ username, password });
+        //debugger;
     }
     public render() {
         return (
@@ -40,10 +47,7 @@ export default connect(
     (store: any) => { return { ...store.authReducer } },
     (dispatch) => {
         return {
-
-            logIn() {
-                return dispatch({ type: c.LOG_IN, payload: {} });
-            }
+            logIn: (value: any) => { dispatch(actions.logIn(value)) }
         }
     }
 )(AuthComponent)
