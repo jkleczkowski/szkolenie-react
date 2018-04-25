@@ -1,10 +1,15 @@
 import axios from 'axios'
 import { Settings } from '../../Settings';
 import * as c from "../../utils/contrans";
-export function fetchItems() {
+//import { ItemsFilters } from './Items';
+const queryString = require('query-string')
+export function fetchItems(filters?: any) {
     return function (dispath: any) {
         //TODO: async
-        axios.get(Settings.ITEMS_END_POINT).then((response) => {
+        let q = queryString.stringify(filters);
+        //console.log(q);
+        //debugger;
+        axios.get(`${Settings.ITEMS_END_POINT}?${q}`).then((response) => {
             //debugger;
             dispath({ type: c.FETCH_ITEM_SUCCESS, payload: response.data.data });
         })

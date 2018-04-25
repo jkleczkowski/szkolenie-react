@@ -17,13 +17,22 @@ export interface IProps {
 export interface IState {
 
 }
-
+export class ItemsFilters {
+    constructor(public title = '',
+        public priceFrom = 0,
+        public category = '',
+        public currentPage = 1,
+        public itemsPerPage = 5) {
+    }
+}
 class Items extends React.Component<IProps, IState> {
-
+    filters: ItemsFilters;
     constructor(props: IProps) {
         super(props)
 
         this.state = {}
+        this.filters = new ItemsFilters();
+
     }
 
     public render() {
@@ -40,16 +49,17 @@ class Items extends React.Component<IProps, IState> {
         )
     }
     public componentDidMount() {
-        this.props.fetchItems();
+       this.props.fetchItems(this.filters);
     }
 }
 
 export default connect(
-    (store: any) => { return { ...store.itemsReducer ,...store.authReducer,} },
+    (store: any) => { return { ...store.itemsReducer, ...store.authReducer, } },
     (dispatch) => {
         return {
-            fetchItems() {
-                return dispatch(actions.fetchItems())
+            fetchItems(filters: ItemsFilters) {
+                //debugger; 
+                return dispatch(actions.fetchItems(filters))
             },
             addItem() {
                 return dispatch({ type: c.ADD_ITEM, payload: Date.now() });
