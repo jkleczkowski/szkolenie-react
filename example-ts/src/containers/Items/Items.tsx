@@ -28,7 +28,7 @@ class Items extends React.Component<IProps, IState> {
         return (
             <div className="row">
                 <div className="col-3"> search    </div>
-                <div className="col-9"><button onClick={this.props.addItem.bind(this)}>Add Item</button>
+                <div className="col-9"> {/* <button onClick={this.props.addItem.bind(this)}>Add Item</button> */}
                     <DataGrid data={this.props.data} onRemove={this.props.removeItem} config={this.props.config} /> </div>
 
             </div>

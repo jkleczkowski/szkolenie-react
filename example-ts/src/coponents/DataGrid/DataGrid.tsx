@@ -25,8 +25,8 @@ export default class DataGrid extends React.Component<IProps, IState> {
                 <table className="table">
                     <thead>
                         <tr>
-                            {this.props.config.map((citem, iidx) => {
-                                return <th key={iidx}>{citem.title != undefined ? citem.title : citem.key.toUpperCase()}</th>
+                            {(this.props.config || []).map((head, iidx) => {
+                                return <th key={iidx}>{head.title != undefined ? head.title : head.key.toUpperCase()}</th>
                             })}
 
                             <th>ACTION</th>
@@ -35,7 +35,7 @@ export default class DataGrid extends React.Component<IProps, IState> {
                     <tbody>{
                         this.props.data.map((row, idx) => {
                             return <tr key={row.id}>
-                                {this.props.config.map(({ key, type }, iidx) => {
+                                {(this.props.config || []).map(({ key, type }, iidx) => {
                                     {
                                         let height = 36;
                                         switch (type) {
