@@ -34,7 +34,7 @@ export function itemsReducer(state = initState, action: any): any {
 
         case c.FETCH_ITEM_SUCCESS:
             //debugger;
-            return { ...state, data: action.payload.data, total: action.payload.total };
+            return { ...state, data: action.payload.data, total: action.payload.total, loading: false };
 
         default:
             return state;

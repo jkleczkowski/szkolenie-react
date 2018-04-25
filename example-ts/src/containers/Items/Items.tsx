@@ -12,7 +12,8 @@ export interface IProps {
     addItem: any,
     removeItem: any,
     fetchItems: any,
-    total?: number
+    total?: number,
+    loading?: boolean;
 }
 
 export interface IState {
@@ -33,11 +34,12 @@ class Items extends React.Component<IProps, IState> {
 
         this.state = {}
         this.filters = new ItemsFilters();
-
+        this.props = { ...this.props, loading: true }
     }
     updateFilters(p, v) {
         //debugger;
         this.filters = { ...this.filters, currentPage: v };
+        //this.props = { ...this.props, loading: true }
         this.props.fetchItems(this.filters);
     }
     public render() {
@@ -49,7 +51,8 @@ class Items extends React.Component<IProps, IState> {
                     <ModalGenerator buttonLabel={'Add Item'} title={'New Item'} acceptBtnLabel={'Save'} cancelBtnLabel={'Cancel'}>
                         <AddItemFormComponent />
                     </ModalGenerator>
-                    <Pagination
+                    {(this.props.total || 0) == 0 ? 'No data...' : <DataGrid data={this.props.data} onRemove={this.props.removeItem} config={this.props.config} />}
+                    {(this.props.total || 0) > 0 ? <Pagination
                         activePage={this.filters.currentPage}
                         itemsCountPerPage={this.filters.itemsPerPage}
                         totalItemsCount={this.props.total}
@@ -58,8 +61,8 @@ class Items extends React.Component<IProps, IState> {
                         activeLinkClass={'active'}
                         pageRangeDisplayed={5}
                         onChange={this.updateFilters.bind(this, 'currentPage')}
-                    />
-                    <DataGrid data={this.props.data} onRemove={this.props.removeItem} config={this.props.config} /> </div>
+                    /> : ''}
+                </div>
             </div>
         )
     }
