@@ -11,7 +11,7 @@ export function fetchItems(filters?: any) {
         //debugger;
         axios.get(`${Settings.ITEMS_END_POINT}?${q}`).then((response) => {
             //debugger;
-            dispath({ type: c.FETCH_ITEM_SUCCESS, payload: response.data.data });
+            dispath({ type: c.FETCH_ITEM_SUCCESS, payload: response.data });
         })
     }
 }

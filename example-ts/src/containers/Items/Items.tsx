@@ -5,13 +5,14 @@ import * as c from "../../utils/contrans";
 import * as actions from './actions';
 import ModalGenerator from "../../components/ModalGenerator";
 import AddItemFormComponent from "./AddItemComponent";
-
+import Pagination from 'react-js-pagination';
 export interface IProps {
     data: any[],
     config: Array<any>,
     addItem: any,
     removeItem: any,
-    fetchItems: any
+    fetchItems: any,
+    total?: number
 }
 
 export interface IState {
@@ -34,7 +35,11 @@ class Items extends React.Component<IProps, IState> {
         this.filters = new ItemsFilters();
 
     }
-
+    updateFilters(p, v) {
+        //debugger;
+        this.filters = { ...this.filters, currentPage: v };
+        this.props.fetchItems(this.filters);
+    }
     public render() {
         return (
             <div className="row">
@@ -44,12 +49,22 @@ class Items extends React.Component<IProps, IState> {
                     <ModalGenerator buttonLabel={'Add Item'} title={'New Item'} acceptBtnLabel={'Save'} cancelBtnLabel={'Cancel'}>
                         <AddItemFormComponent />
                     </ModalGenerator>
+                    <Pagination
+                        activePage={this.filters.currentPage}
+                        itemsCountPerPage={this.filters.itemsPerPage}
+                        totalItemsCount={this.props.total}
+                        itemClass={'page-item'}
+                        linkClass={'page-link'}
+                        activeLinkClass={'active'}
+                        pageRangeDisplayed={5}
+                        onChange={this.updateFilters.bind(this, 'currentPage')}
+                    />
                     <DataGrid data={this.props.data} onRemove={this.props.removeItem} config={this.props.config} /> </div>
             </div>
         )
     }
     public componentDidMount() {
-       this.props.fetchItems(this.filters);
+        this.props.fetchItems(this.filters);
     }
 }
 
