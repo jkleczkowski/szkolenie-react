@@ -16,3 +16,11 @@ export function logIn(value: AuthDataInterface) {
             })
     }
 }
+export function logged() {
+    return function (dispatch: any) {
+        axios.get(Settings.LOGGED_END_POINT)
+            .then((resp) => {
+                if (resp.data.ok) dispatch({ type: c.USER_LOGGED })
+            })
+    }
+}

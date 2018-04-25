@@ -4,7 +4,7 @@ import Items from './containers/Items'
 import Workers from './containers/Workers'
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import ItemDetails from './containers/Items/ItemDetails';
-import ModalGenerator from "./components/ModalGenerator";
+
 import AuthComponent from './components/AuthComponnet/'
 class App extends React.Component {
 
@@ -27,10 +27,9 @@ class App extends React.Component {
                   to={'/workers'}>workers</NavLink>
               </div>
               <div>
-                <ModalGenerator buttonLabel={'Log In'} title={'Logging'} >
+               
                   <AuthComponent />
-
-                </ModalGenerator>
+             
               </div>
             </nav>
             <div className="container-fluid">
